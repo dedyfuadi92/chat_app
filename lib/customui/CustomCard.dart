@@ -1,41 +1,63 @@
+import 'package:chat_app/model/ChatModel.dart';
+import 'package:chat_app/pages/IndividualPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({Key? key}) : super(key: key);
+  const CustomCard({Key key, this.chatModel}) : super(key: key);
+  final ChatModel chatModel;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: CircleAvatar(
-        radius: 30,
-        child: SvgPicture.asset(
-          'assets/groups.svg',
-          color: Colors.white,
-          height: 35,
-          width: 35,
-        ),
-        backgroundColor: Colors.orange,
-      ),
-      title: Text(
-        'Andromeda',
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-      ),
-      subtitle: Row(
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => IndividualPage()));
+      },
+      child: Column(
         children: [
-          Icon(Icons.done_all),
-          SizedBox(
-            width: 5,
+          ListTile(
+            leading: CircleAvatar(
+              radius: 30,
+              child: SvgPicture.asset(
+                chatModel.isGroup ? 'assets/groups.svg' : 'assets/person.svg',
+                color: Colors.white,
+                height: 35,
+                width: 35,
+              ),
+              backgroundColor: Colors.orange,
+            ),
+            title: Text(
+              chatModel.name,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            subtitle: Row(
+              children: [
+                Icon(Icons.done_all),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  chatModel.currentMessage,
+                  style: TextStyle(
+                    fontSize: 13,
+                  ),
+                ),
+              ],
+            ),
+            trailing: Text(chatModel.time),
           ),
-          Text(
-            'Yuk main bola bro !',
-            style: TextStyle(
-              fontSize: 13,
+          Padding(
+            padding: const EdgeInsets.only(
+              right: 20,
+              left: 80,
+            ),
+            child: Divider(
+              thickness: 1,
             ),
           ),
         ],
       ),
-      trailing: Text('16:53'),
     );
   }
 }
