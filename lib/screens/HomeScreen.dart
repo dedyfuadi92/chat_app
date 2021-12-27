@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Coba Chat App'),
+        title: Text('Latihan Aplikasi Chat'),
         foregroundColor: Colors.white,
         actions: [
           IconButton(
