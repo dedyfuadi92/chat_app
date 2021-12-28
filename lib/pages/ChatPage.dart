@@ -15,11 +15,11 @@ class _ChatPageState extends State<ChatPage> {
       name: 'Marjuki',
       icon: 'person.svg',
       isGroup: false,
-      time: '12:00',
+      time: '11:20',
       currentMessage: 'Hello tes chat',
     ),
     ChatModel(
-      name: 'Suamrno',
+      name: 'Sumarno',
       icon: 'person.svg',
       isGroup: false,
       time: '12:00',

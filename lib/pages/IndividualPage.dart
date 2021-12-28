@@ -14,7 +14,9 @@ class _IndividualPageState extends State<IndividualPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black12,
       appBar: AppBar(
+        foregroundColor: Colors.white,
         leadingWidth: 80,
         titleSpacing: 0,
         leading: InkWell(
@@ -66,7 +68,7 @@ class _IndividualPageState extends State<IndividualPage> {
                   ),
                 ),
                 Text(
-                  'Last seen today at',
+                  'Last seen today at ' + widget.chatModel.time,
                   style: TextStyle(
                     fontSize: 13,
                   ),
@@ -122,6 +124,86 @@ class _IndividualPageState extends State<IndividualPage> {
             },
           )
         ],
+      ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Stack(
+          children: [
+            ListView(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width - 55,
+                    child: Card(
+                      margin: EdgeInsets.only(
+                        left: 3,
+                        right: 3,
+                        bottom: 8,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: TextFormField(
+                        textAlignVertical: TextAlignVertical.center,
+                        keyboardType: TextInputType.multiline,
+                        maxLines: 5,
+                        minLines: 1,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Type a message...',
+                          prefixIcon: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.emoji_emotions,
+                            ),
+                          ),
+                          contentPadding: EdgeInsets.fromLTRB(5, 7, 5, 5),
+                          suffixIcon: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.attach_file,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.camera_alt,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.orange,
+                      foregroundColor: Colors.white,
+                      radius: 25,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.mic,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
